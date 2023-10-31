@@ -37,9 +37,12 @@ public class ChessMatch {
         return capturePiece;
     }
 
-    public void validateSourcePosition(Position position){
+    private void validateSourcePosition(Position position){
         if (!board.thereIsAPieace(position)) {
             throw new ChessException("There is no piece on source position");
+        }
+        if(!board.piece(position).isThereAnyPossibleMove()){
+            throw new ChessException("There is no possible moves for the chosen piece");
         }
     }
 
